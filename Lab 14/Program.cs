@@ -10,21 +10,27 @@ namespace Lab_14
     {
         static void Main(string[] args)
         {
-            Cat cat = new Cat("Васька");
+            string catName = "Кисуля";
+            string dogName = "Рэкс";
+            Cat cat = new Cat(catName);
+            Dog dog = new Dog(dogName);
+            cat.ShowInfo();
+            dog.ShowInfo();
+            Console.ReadKey();
         }
     }
     abstract class Animal
     {
 
         public abstract string Name { get; set; }
-        public Animal(string Name)
+        public Animal(string name)
         {
-           this.Name=Name;
+           Name=name;
         }
-        public abstract string Say();
-        public virtual void ShowInfo()
+        public abstract void Say();
+        public  void ShowInfo()
         {
-            Console.WriteLine("имя:{0}", Name);
+            Console.Write(" Меня зовут {0}, ", Name);
             Say();
         }
 
@@ -32,6 +38,11 @@ namespace Lab_14
     class Cat : Animal
     {
         public string name;
+        public Cat(string name)
+            : base(name)
+        {
+            
+        }
         public override string Name
         {
             get
@@ -44,17 +55,42 @@ namespace Lab_14
             }
 
         }
-        public Cat(string name) : base(name)
+       
+
+
+        public override void Say()
         {
-            Name = name;
+            
+            Console.WriteLine("Мяу");
+        }
+    }
+    class Dog : Animal
+    {
+        public string name;
+        public Dog(string name)
+            : base(name)
+        {
+
+        }
+        public override string Name
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                name = value;
+            }
+
         }
 
 
-        public override string Say()
+
+        public override void Say()
         {
-            
-            string say = "Мяу";
-            Console.WriteLine("Говорит {0}", say);
+
+            Console.WriteLine("Гав");
         }
     }
 
