@@ -10,15 +10,16 @@ namespace Lab_14
     {
         static void Main(string[] args)
         {
+            Cat cat = new Cat("Васька");
         }
     }
     abstract class Animal
     {
-        
+
         public abstract string Name { get; set; }
         public Animal(string Name)
         {
-            Name="nikto";
+           this.Name=Name;
         }
         public abstract string Say();
         public virtual void ShowInfo()
@@ -26,9 +27,9 @@ namespace Lab_14
             Console.WriteLine("имя:{0}", Name);
             Say();
         }
-        
+
     }
-    class Cat:Animal
+    class Cat : Animal
     {
         public string name;
         public override string Name
@@ -39,18 +40,22 @@ namespace Lab_14
             }
             set
             {
-                name = "Кошка";
+                name = value;
             }
 
         }
+        public Cat(string name) : base(name)
+        {
+            Name = name;
+        }
+
 
         public override string Say()
         {
-            Console.WriteLine("Говорит Мяу");
+            
+            string say = "Мяу";
+            Console.WriteLine("Говорит {0}", say);
         }
     }
-    class Dog:Animal
-    {
-        public string name;
-    }
+
 }
